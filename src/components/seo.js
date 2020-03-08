@@ -32,20 +32,20 @@ function SEO({ description, lang, meta, keywords, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title="Lograf Blog"
+      titleTemplate={`Lograf Blog`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: "Lograf Blog",
         },
         {
           property: `og:title`,
-          content: title,
+          content: "Lograf Blog",
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: "Lograf Blog",
         },
         {
           property: `og:type`,
@@ -57,15 +57,15 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: "Lograf Blog",
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: "Lograf Blog",
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: "Lograf Blog",
         },
       ]
         .concat(
