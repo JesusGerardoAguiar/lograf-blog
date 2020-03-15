@@ -1,11 +1,26 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-
+import styled from "styled-components"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { createGlobalStyle } from "styled-components"
+const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family: MontserratL;
+    src: url(${require("../../content/assets/fonts/Montserrat-Light.ttf")});
+  }
+  @font-face {
+    font-family: MonteserratR;
+    src: url(${require("../../content/assets/fonts/Montserrat-Regular.otf")});
+  }
+  @font-face {
+    font-family: MonteserratB;
+    src: url(${require("../../content/assets/fonts/Montserrat-Bold.otf")});
+  }
+`
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,14 +30,16 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
+        <GlobalStyles />
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
+        <PostTile>{post.frontmatter.title}</PostTile>
         <p
           style={{
             ...scale(-1 / 5),
+            fontFamily: "MontserratL",
             display: `block`,
             marginBottom: rhythm(1),
             marginTop: rhythm(-1),
@@ -30,15 +47,11 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.date}
         </p>
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
+        <MDXRenderer style={{ fontFamily: "MonteserratR!important" }}>
+          {post.body}
+        </MDXRenderer>
 
-        <ul
+        {/* <ul
           style={{
             display: `flex`,
             flexWrap: `wrap`,
@@ -61,13 +74,18 @@ class BlogPostTemplate extends React.Component {
               </Link>
             )}
           </li>
-        </ul>
+        </ul> */}
       </Layout>
     )
   }
 }
 
 export default BlogPostTemplate
+
+const PostTile = styled.h1`
+  font-family: MonteserratR;
+  color: #f3b52a;
+`
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
