@@ -36,20 +36,21 @@ class Blog extends React.Component {
             const title = node.frontmatter.title || node.fields.slug
             return (
               <PostDiv key={node.fields.slug}>
-                <PostTile style={{ marginBottom: rhythm(1 / 4) }}>
-                  <Link
-                    style={{ boxShadow: `none` }}
-                    to={`blog${node.fields.slug}`}
-                  >
+                <Link
+                  style={{ boxShadow: `none` }}
+                  to={`blog${node.fields.slug}`}
+                >
+                    <HeaderPost headerImg={node.frontmatter.headerImg} />
+                  <PostTile style={{ marginBottom: rhythm(1 / 4) }}>
                     {title}
-                  </Link>
-                </PostTile>
-                <small>{node.frontmatter.date}</small>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
+                  </PostTile>
+                  <small>{node.frontmatter.date}</small>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  />
+                </Link>
               </PostDiv>
             )
           })}
@@ -65,7 +66,8 @@ const PostTile = styled.h3`
   margin-bottom: rhythm(1 / 4);
   font-family: MonteserratR;
   color: #f3b52a;
-
+  margin-top: 1.5rem!important;
+  margin-left: 1rem;
   a {
     font-family: MonteserratR;
     color: #f3b52a;
@@ -73,10 +75,23 @@ const PostTile = styled.h3`
 `
 
 const PostDiv = styled.div`
-  small, 
+  small,
   p {
     font-family: MontserratL;
+    color: black;
+    margin-left: 1rem;
   }
+  border: 1px solid #f3b543;
+  border-radius: 5px;
+`
+
+const HeaderPost = styled.div`
+  background-image: url(${props => props.headerImg});
+  width: 100%;
+  height: 10rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 
 export const pageQuery = graphql`
@@ -97,6 +112,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            headerImg
           }
         }
       }
