@@ -5,6 +5,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import { createGlobalStyle } from "styled-components"
+import { Applause } from "../../static/assets/Applause"
+import ClapButton from "../components/ClapButton";
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -40,7 +42,7 @@ class Blog extends React.Component {
                   style={{ boxShadow: `none` }}
                   to={`blog${node.fields.slug}`}
                 >
-                    <HeaderPost headerImg={node.frontmatter.headerImg} />
+                  <HeaderPost headerImg={node.frontmatter.headerImg} />
                   <PostTile style={{ marginBottom: rhythm(1 / 4) }}>
                     {title}
                   </PostTile>
@@ -51,6 +53,12 @@ class Blog extends React.Component {
                     }}
                   />
                 </Link>
+                <ClapButton
+                  count={0}
+                  countTotal={0}
+                  isClicked={false}
+                  iconComponent={props => <Applause />}
+                />
               </PostDiv>
             )
           })}
@@ -66,7 +74,7 @@ const PostTile = styled.h3`
   margin-bottom: rhythm(1 / 4);
   font-family: MonteserratR;
   color: #f3b52a;
-  margin-top: 1.5rem!important;
+  margin-top: 1.5rem !important;
   margin-left: 1rem;
   a {
     font-family: MonteserratR;
@@ -83,6 +91,17 @@ const PostDiv = styled.div`
   }
   border: 1px solid #f3b543;
   border-radius: 5px;
+`
+
+const ApplauseDiv = styled.button`
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  :hover {
+    opacity: 0.5;
+  }
 `
 
 const HeaderPost = styled.div`
