@@ -1,8 +1,7 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
@@ -25,8 +24,9 @@ const GlobalStyles = createGlobalStyle`
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
+    console.log(this.props.data);
+    console.log(post)
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -35,6 +35,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
+        <HeaderPost headerImg={post.frontmatter.headerImg} />
         <PostTile>{post.frontmatter.title}</PostTile>
         <p
           style={{
@@ -85,6 +86,18 @@ export default BlogPostTemplate
 const PostTile = styled.h1`
   font-family: MonteserratR;
   color: #f3b52a;
+  margin-top: 1rem;
+`
+
+
+const HeaderPost = styled.div`
+  background-image: url(${props => props.headerImg});
+  width: 100%;
+  height: 10rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 4rem;
 `
 
 export const pageQuery = graphql`
@@ -101,6 +114,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        headerImg
         date(formatString: "MMMM DD, YYYY")
         description
       }

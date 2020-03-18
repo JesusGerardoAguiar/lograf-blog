@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider, styled } from 'styled-components'
 
 import ClapWrap from './components/ClapWrap'
 import ClapIcon from './components/ClapIcon'
@@ -17,10 +17,8 @@ const Clap = class extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      unclicked: true,
       count: this.props.count,
       countTotal: this.props.countTotal,
-      isClicked: props.count > 0,
       isHover: false
     }
     this.onClick = this.onClick.bind(this)
@@ -83,7 +81,7 @@ const Clap = class extends React.Component {
       delay: tlDuration / 2
     })
 
-    const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
+    const opacityStart = this.props.count > 0 ? 1 : 0
 
     const countTotalAnimation = new mojs.Html({
       el: this.clapCountTotalRef.current,
@@ -127,10 +125,8 @@ const Clap = class extends React.Component {
       if (count < maxCount) {
         onCountChange({ count: count + 1, countTotal: countTotal + 1 })
         return {
-          unclicked: false,
           count: count + 1,
           countTotal: countTotal + 1,
-          isClicked: true
         }
       }
     })
@@ -141,7 +137,6 @@ const Clap = class extends React.Component {
     this.setState(({ count, countTotal }) => {
       onCountChange({ count: 0, countTotal: countTotal - count })
       return {
-        isClicked: false,
         countTotal: countTotal - count,
         count: 0
       }
@@ -149,12 +144,12 @@ const Clap = class extends React.Component {
   }
 
   render () {
-    const { count, countTotal, isClicked, isHover } = this.state
+    const { count, countTotal, isHover } = this.state
     const { iconComponent: ClapIcon } = this.props
-
+    console.log(this.clapCountTotalRef)
     return (
       <ThemeProvider theme={this.getTheme()}>
-        <ClapWrap isClicked={isClicked} onClickClear={this.onClickClear}>
+        <ClapWrap onClickClear={this.onClickClear}>
           <ClapButton
             ref={this.clapButtonRef}
             className='clap'
@@ -163,13 +158,16 @@ const Clap = class extends React.Component {
             onMouseLeave={e => this.setState({ isHover: false })}
             isHover={isHover && count === 0}
           >
-            <ClapIcon ref={this.clapIconRef} className='clap--icon' isClicked={isClicked} />
+            <ClapIcon ref={this.clapIconRef} className='clap--icon'  />
             <ClapCount ref={this.clapCountRef} className='clap--count'>
               +{count}
             </ClapCount>
-            <ClapCountTotal ref={this.clapCountTotalRef} className='clap--count-total'>
+            <div ref={this.clapCountTotalRef} >
+            </div>
+            <ClapCountTotal className='clap--count-total'>
               {Number(countTotal).toLocaleString()}
             </ClapCountTotal>
+            
           </ClapButton>
         </ClapWrap>
       </ThemeProvider>
@@ -177,11 +175,12 @@ const Clap = class extends React.Component {
   }
 }
 
+
+
 Clap.defaultProps = {
   countTotal: 0,
   count: 0,
   maxCount: 50,
-  isClicked: false,
   onCountChange: () => {},
   iconComponent: ClapIcon
 }

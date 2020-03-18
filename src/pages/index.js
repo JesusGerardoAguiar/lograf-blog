@@ -6,7 +6,8 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import { createGlobalStyle } from "styled-components"
 import { Applause } from "../../static/assets/Applause"
-import ClapButton from "../components/ClapButton";
+import ClapButton from "../components/ClapButton"
+import gql from "graphql-tag"
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -23,49 +24,47 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-class Blog extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMdx.edges
+const Blog = (props) => {
+  const { data } = props
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allMdx.edges
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <GlobalStyles />
-        <SEO />
-        <div style={{ margin: "20px 0 40px" }}>
-          {posts.map(({ node }) => {
-            const title = node.frontmatter.title || node.fields.slug
-            return (
-              <PostDiv key={node.fields.slug}>
-                <Link
-                  style={{ boxShadow: `none` }}
-                  to={`blog${node.fields.slug}`}
-                >
-                  <HeaderPost headerImg={node.frontmatter.headerImg} />
-                  <PostTile style={{ marginBottom: rhythm(1 / 4) }}>
-                    {title}
-                  </PostTile>
-                  <small>{node.frontmatter.date}</small>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                </Link>
-                <ClapButton
-                  count={0}
-                  countTotal={0}
-                  isClicked={false}
-                  iconComponent={props => <Applause />}
+  return (
+    <Layout location={props.location} title={siteTitle}>
+      <GlobalStyles />
+      <SEO />
+      <div style={{ margin: "20px 0 40px" }}>
+        {posts.map(({ node }) => {
+          console.log(node.frontmatter.reactions)
+          const title = node.frontmatter.title || node.fields.slug
+          return (
+            <PostDiv key={node.fields.slug}>
+              <Link
+                style={{ boxShadow: `none` }}
+                to={`blog${node.fields.slug}`}
+              >
+                <HeaderPost headerImg={node.frontmatter.headerImg} />
+                <PostTile style={{ marginBottom: rhythm(1 / 4) }}>
+                  {title}
+                </PostTile>
+                <small>{node.frontmatter.date}</small>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
                 />
-              </PostDiv>
-            )
-          })}
-        </div>
-      </Layout>
-    )
-  }
+              </Link>
+              {/* <ClapButton
+                count={node.frontmatter.reactions}
+                countTotal={node.frontmatter.reactions}
+                iconComponent={props => <Applause />}
+              /> */}
+            </PostDiv>
+          )
+        })}
+      </div>
+    </Layout>
+  )
 }
 
 export default Blog
@@ -113,6 +112,9 @@ const HeaderPost = styled.div`
   background-size: cover;
 `
 
+
+
+
 export const pageQuery = graphql`
   query {
     site {
@@ -132,6 +134,7 @@ export const pageQuery = graphql`
             title
             description
             headerImg
+            reactions
           }
         }
       }
