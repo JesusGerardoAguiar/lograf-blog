@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import Header from './Header';
-import Lograf from "../../content/assets/lografLogo.svg";
+import Lograf from "../../content/assets/lografLogoBlack.svg";
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -23,10 +23,10 @@ class Layout extends React.Component {
           <header>{header}</header>
           <main>{children}</main>
         </div>
-        <Footer>
+        <Footer backgroundImg={Lograf}>
           © {new Date().getFullYear()}, powered by
           {` `}
-          <a href="https://www.gatsbyjs.org"><img src={Lograf} alt="logo" style={{ width: "10rem" }} /></a>
+          <a href="https://www.lografdesign.com"><img src={Lograf} alt="f" style={{width: '5rem'}} /></a>
         </Footer>
       </Wrapper>
     )
@@ -45,6 +45,21 @@ const Footer = styled.footer`
   text-align: center;
   margin: 24px;
   font-family: MonteserratR;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  a{
+    display: flex;
+    border-shadow: none;
+    color: transparent;
+    
+  }
+  img{
+    width: 5rem;
+    margin-bottom: 0px;
+    margin-left: 0.5rem;
+  }
 `
 
 export default Layout

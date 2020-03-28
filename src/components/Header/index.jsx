@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <MainDiv>
       <ImageDiv>
-        <img src={Lograf} alt="logo" style={{ width: "10rem" }} />
+        <img src={Lograf} alt="logo" style={{ width: "20rem" }} />
       </ImageDiv>
     </MainDiv>
   );

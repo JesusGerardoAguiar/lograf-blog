@@ -82,6 +82,7 @@ const PostTile = styled.h3`
 `
 
 const PostDiv = styled.div`
+  margin-bottom: 2rem;
   small,
   p {
     font-family: MontserratL;

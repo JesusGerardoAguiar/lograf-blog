@@ -21,7 +21,7 @@ export const MainDiv = styled.nav`
 `;
 
 export const ImageDiv = styled.div`
-  width: 20rem;
+width: inherit;
   display: flex;
   justify-content: center;
 
