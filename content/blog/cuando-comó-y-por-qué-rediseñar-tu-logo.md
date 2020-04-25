@@ -1,6 +1,6 @@
 ---
 path: rediseña-tu-logo
-headerImg: /assets/portada.jpg
+headerImg: /assets/portada-01.jpg
 date: 2020-04-25T18:31:23.939Z
 reactions: 1
 title: 'Cuando, comó y por qué rediseñar tu logo.'
