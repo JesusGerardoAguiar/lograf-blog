@@ -19,6 +19,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: MonteserratB;
     src: url(${require("../../content/assets/fonts/Montserrat-Bold.otf")});
   }
+  li,ol,ul,p{
+    font-family: MonteserratR!important;
+  }
+  h1,h2,strong{
+    font-family: MonteserratB!important;
+  }
 `
 
 class BlogPostTemplate extends React.Component {
@@ -87,6 +93,7 @@ const PostTile = styled.h1`
   font-family: MonteserratR;
   color: #f3b52a;
   margin-top: 1rem;
+  margin-bottom:3rem;
 `
 
 

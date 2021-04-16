@@ -22,9 +22,15 @@ const GlobalStyles = createGlobalStyle`
     font-family: MonteserratB;
     src: url(${require("../../content/assets/fonts/Montserrat-Bold.otf")});
   }
+  li,ol,strong,ul,p{
+    font-family: MonteserratR!important;
+  }
+  h1,h2{
+    font-family: MonteserratB!important;
+  }
 `
 
-const Blog = (props) => {
+const Blog = props => {
   const { data } = props
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMdx.edges
@@ -112,9 +118,6 @@ const HeaderPost = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `
-
-
-
 
 export const pageQuery = graphql`
   query {
