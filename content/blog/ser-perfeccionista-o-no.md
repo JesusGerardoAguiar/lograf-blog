@@ -9,29 +9,17 @@ description: >-
   inventores o empresarios grandes, como por ejemplo Steve Jobs, fundador de
   Apple y CoFundador de Pixar.
 ---
-**_Aclaración_**
+_**Aclaración**_
 
-Tener niveles de exigencia altos _**no es lo mismo que**_ perfeccionismo.
+Tener niveles de exigencia altos **_no es lo mismo que_** perfeccionismo. Todos tenemos nuestros propios niveles ya que **queremos brindar el mejor producto o servicio posible,** por eso, vamos a definir que es el perfeccionismo:
 
-Todos tenemos nuestros propios niveles ya que **queremos brindar el mejor producto o servicio posible,** por eso, vamos a definir que es el perfeccionismo:
-
-> Una persona es 
->
-> **perfeccionista**
->
->  cuando sus niveles de exigencia son altos 
->
-> **más allá del alcance o la razón - _David Burns, Psicólogo_**
+> Una persona es **perfeccionista** cuando sus niveles de exigencia son altos **más allá del alcance o la razón - _David Burns, Psicólogo_**
 
 Cuando hablamos de perfeccionismo siempre imaginamos a gente exitosa, inventores o empresarios grandes, como por ejemplo Steve Jobs, fundador de Apple y CoFundador de Pixar.
 
 Steve exigía un nivel de perfección muy alto a sus empleados, tanto para el hardware y software de sus productos, a veces incluso hasta elevando el costo de sus proyectos al doble y atrasándolos por detalles tan mínimos como el color de adentro de una computadora.
 
-
-
 Podríamos decir que si él no fuese así no tendriamos los productos de Apple que tenemos hoy en día con un nivel de calidad alto, pero a que costo? Es más que sabido que el siempre terminaba peleado con sus empleados, los empleados renunciaban por un nivel de estrés y ansiedad alto y con muchos más problemas.
-
-
 
 Todos hemos tenido ese momento "Steve Jobs" donde hemos pasado toda la noche intentando perfeccionar un detalle que, sinceramente, nadie iba a prestarle atención, pero después de eso vienen los verdaderos problemas, estrés, ansiedad incluso depresión podrían ser algunos problemas que heredemos por ser "perfeccionistas", y esto se debe a que, si bien el perfeccionismo esta ligado a estar mas motivado con el trabajo o con "ponerse la camiseta", también esta ligado a los trastornos que nombramos anteriormente.
 
